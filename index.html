@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyspære</title>
+    <style>
+      .lightPear {
+        background-color: lightgray;
+        border: 1px solid darkslategrey;
+        border-radius: 50%;
+        width: 250px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+
+  <script>
+    // model
+    let bulb = 'lightgray';
+    let bulbText = 'Lyset er av';
+    let statusLight = false;
+
+    // view
+    updateView();
+    function updateView() {
+      document.getElementById('app').innerHTML = /*HTML*/ `
+      <div class="lightPear" style="background-color:${bulb}"></div>
+      <button onclick="changeStatusLight()">Lysbryter</button>
+      <div>${bulbText}</div>
+      `;
+    }
+    // controller;
+
+    function changeStatusLight() {
+      statusLight = !statusLight;
+      lightSwitch();
+    }
+
+    function lightSwitch() {
+      if (statusLight === false) {
+        bulb = 'yellow';
+        bulbText = 'Lyset er på';
+        // sette bulb til å være på eller av med variabler - ikke gette og sette style
+        // bulb.style.backgroundColor = 'yellow';
+        // bulbText.innerHTML = 'Lyset er på';
+      } else {
+        bulb = 'lightgray';
+        bulbText = 'Lyset er av';
+        // bulb.style.backgroundColor = 'lightgray';
+        // bulbText.innerHTML = 'Lyset er av';
+      }
+      updateView();
+    }
+  </script>
+</html>
